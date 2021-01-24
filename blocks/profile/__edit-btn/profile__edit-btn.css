@@ -1,6 +1,7 @@
 .profile__edit-btn {
   width: 24px;
   height: 24px;
+  padding: 12px;
   box-sizing: border-box;
   display: inline-flex;
 
@@ -9,10 +10,6 @@
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
-  cursor: pointer;
-  transition: 0.4s;
-}
 
-.profile__edit-btn:hover {
-  opacity: 0.6;
+
 }

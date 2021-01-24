@@ -1,6 +1,12 @@
 .profile__first-line {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 
   margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+  .profile__first-line {
+    justify-content: center;
+  }
 }

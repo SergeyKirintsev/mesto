@@ -3,6 +3,7 @@
 
 @import url(../blocks/body/body.css);
 @import url(../blocks/page/page.css);
+@import url(../blocks/btn-hover/btn-hover.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
@@ -19,6 +20,15 @@
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__profession/profile__profession.css);
 
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__description/elements__description.css);
+@import url(../blocks/elements/__element/elements__element.css);
+@import url(../blocks/elements/__img/elements__img.css);
+@import url(../blocks/elements/__like-btn/elements__like-btn.css);
+@import url(../blocks/elements/__like-btn/_active/elements__like-btn_active.css);
+@import url(../blocks/elements/__list/elements__list.css);
+@import url(../blocks/elements/__text/elements__text.css);
 
 
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);

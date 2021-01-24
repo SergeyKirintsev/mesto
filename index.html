@@ -1,44 +1,113 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Путешествия по России</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title>Путешествия по России</title>
-</head>
-
-<body class="body">
-  <div class="page">
-
-    <header class="header">
-        <img class="header__logo"src="./images/logo.svg" alt="логотип">
+  <body class="body">
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="логотип" />
         <div class="line"></div>
-    </header>
+      </header>
 
-    <main class="content">
+      <main class="content">
+        <section class="profile">
+          <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар" />
 
-      <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар" >
-
-        <div class="profile__info">
-          <div class="profile__first-line">
-            <p class="profile__name block">Жак-Ив Кусто</p>
-            <button class="profile__edit-btn"></button>
+          <div class="profile__info">
+            <div class="profile__first-line">
+              <p class="profile__name block">Человек с длинным именем</p>
+              <button class="profile__edit-btn btn-hover"></button>
+            </div>
+            <p class="profile__profession block">
+              Исследователь океана и всего что можно
+            </p>
           </div>
-          <p class="profile__profession block">Исследователь океана</p>
-        </div>
 
-        <button class="profile__add-btn"></button>
-      </section>
+          <button class="profile__add-btn btn-hover"></button>
+        </section>
 
-    </main>
+        <section class="elements">
+          <ul class="elements__list">
+            <li class="elements__element">
+              <img
+                src="./images/unsplash/1.jpg"
+                alt="Плесецк"
+                class="elements__img"
+              />
+              <div class="elements__description">
+                <p class="elements__text block">Плесецк</p>
+                <button class="elements__like-btn btn-hover elements__like-btn_active"></button>
+              </div>
+            </li>
+            <li class="elements__element">
+              <img
+                src="./images/unsplash/cristina-pop-0tEVhJ0O0L8-unsplash.jpg"
+                alt="Савинск"
+                class="elements__img"
+              />
+              <div class="elements__description">
+                <p class="elements__text block">Савинск</p>
+                <button class="elements__like-btn btn-hover"></button>
+              </div>
+            </li>
+            <li class="elements__element">
+              <img
+                src="./images/unsplash/gabe-pierce-QLSg-fslbVo-unsplash.jpg"
+                alt="Море"
+                class="elements__img"
+              />
+              <div class="elements__description">
+                <p class="elements__text block">Море</p>
+                <button class="elements__like-btn btn-hover"></button>
+              </div>
+            </li>
+            <li class="elements__element">
+              <img
+                src="./images/unsplash/jon-tyson-h-3OIM46Mmc-unsplash.jpg"
+                alt="Место с длинным названием"
+                class="elements__img"
+              />
+              <div class="elements__description">
+                <p class="elements__text block">
+                  Еще одно место с длинным названием
+                </p>
+                <button class="elements__like-btn btn-hover"></button>
+              </div>
+            </li>
+            <li class="elements__element">
+              <img
+                src="./images/unsplash/laura-nyhuis-LzxYO0obJh8-unsplash.jpg"
+                alt="Где-то"
+                class="elements__img"
+              />
+              <div class="elements__description">
+                <p class="elements__text block">Где-то</p>
+                <button class="elements__like-btn btn-hover"></button>
+              </div>
+            </li>
+            <li class="elements__element">
+              <img
+                src="./images/unsplash/mike-palmowski-MoyT1ZB07J0-unsplash.jpg"
+                alt="На камнях"
+                class="elements__img"
+              />
+              <div class="elements__description">
+                <p class="elements__text block">На камнях высоко</p>
+                <button class="elements__like-btn btn-hover"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
 
-    <footer class="footer">
-      <p class="footer__copyright">&copy; 2020. Киринцев Сергей</p>
-    </footer>
-
-  </div>
-</body>
-
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2021. Киринцев Сергей</p>
+      </footer>
+    </div>
+  </body>
 </html>

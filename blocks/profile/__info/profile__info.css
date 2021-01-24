@@ -4,3 +4,19 @@
 
   max-width: 345px;
 }
+
+@media screen and (max-width: 1000px) {
+  .profile__info {
+      margin: 22px auto 36px;
+      /* max-width: 70%; */
+      /* max-width: 300px; */
+      
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__info {
+      /* max-width: 90%; */
+      max-width: 200px;
+  }
+}

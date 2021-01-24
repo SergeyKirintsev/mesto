@@ -2,4 +2,18 @@
   min-width: 142px;
   min-height: 33px;
   margin-bottom: 41px;
+  transition: 1s;
+}
+
+.header__logo:hover {
+  opacity: 0.01;
+}
+
+@media screen and (max-width: 500px) {
+  .header__logo {
+    min-width: 103.74px;
+    min-height: 24.4px;
+    margin-bottom: 31.6px;
+    margin-left: 27px;
+  }
 }
