@@ -1,0 +1,6 @@
+.profile__first-line {
+  display: flex;
+  align-items: baseline;
+
+  margin-bottom: 16px;
+}
