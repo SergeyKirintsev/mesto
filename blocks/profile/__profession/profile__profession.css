@@ -5,5 +5,11 @@
   line-height: 1.22;
 
   margin: 0;
+
+}
+
+@media screen and (max-width: 1000px) {
+  .profile__profession {
   text-align: center;
+  }
 }
