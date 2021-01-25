@@ -15,4 +15,4 @@
 
 Фотографии взяты с сайта [https://unsplash.com](https://unsplash.com) и оптимизированы, чтобы сайт загружался быстрее.
 
-[Посмотреть работу на GitHub Pages](https://sergeykirintsev.github.io/mesto/)
+[Посмотреть работу на GitHub Pages](https://sergeykirintsev.github.io/mesto/index.html)
