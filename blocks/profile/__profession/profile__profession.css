@@ -5,11 +5,14 @@
   line-height: 1.22;
 
   margin: 0;
-
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 500px) {
   .profile__profession {
-  text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
   }
 }

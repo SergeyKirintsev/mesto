@@ -11,3 +11,11 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@media screen and (max-width: 1000px) {
+  .profile__edit-btn {
+    width: 18px;
+    height: 18px;
+    padding: 9px;
+  }
+}
