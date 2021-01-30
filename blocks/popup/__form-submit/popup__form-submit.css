@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .popup__title {
+  .popup__form-submit {
     font-size: 14px;
     line-height: 1.21;
   }

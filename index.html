@@ -21,12 +21,22 @@
           <div class="profile__info">
             <div class="profile__first-line">
               <p class="profile__name block">Человек с длинным именем</p>
-              <button class="profile__edit-btn btn-hover"></button>
+              <button
+                type="button"
+                aria-label="Редактировать профиль"
+                class="profile__edit-btn btn-hover"
+              ></button>
             </div>
-            <p class="profile__profession block">Исследователь океана и всего что можно</p>
+            <p class="profile__profession block">
+              Исследователь океана и всего что можно
+            </p>
           </div>
 
-          <button class="profile__add-btn btn-hover"></button>
+          <button
+            type="button"
+            aria-label="Добавить карточку"
+            class="profile__add-btn btn-hover"
+          ></button>
         </section>
 
         <section class="elements">
@@ -40,7 +50,9 @@
               <div class="elements__description">
                 <p class="elements__text block">Плесецк</p>
                 <button
-                  class="elements__like-btn btn-hover elements__like-btn_active"
+                  type="button"
+                  aria-label="Нравится"
+                  class="elements__like-btn btn-hover"
                 ></button>
               </div>
             </li>
@@ -52,7 +64,11 @@
               />
               <div class="elements__description">
                 <p class="elements__text block">Савинск</p>
-                <button class="elements__like-btn btn-hover"></button>
+                <button
+                  type="button"
+                  aria-label="Нравится"
+                  class="elements__like-btn btn-hover"
+                ></button>
               </div>
             </li>
             <li class="elements__element">
@@ -63,7 +79,11 @@
               />
               <div class="elements__description">
                 <p class="elements__text block">Море</p>
-                <button class="elements__like-btn btn-hover"></button>
+                <button
+                  type="button"
+                  aria-label="Нравится"
+                  class="elements__like-btn btn-hover"
+                ></button>
               </div>
             </li>
             <li class="elements__element">
@@ -76,7 +96,11 @@
                 <p class="elements__text block">
                   Еще одно место с длинным названием
                 </p>
-                <button class="elements__like-btn btn-hover"></button>
+                <button
+                  type="button"
+                  aria-label="Нравится"
+                  class="elements__like-btn btn-hover"
+                ></button>
               </div>
             </li>
             <li class="elements__element">
@@ -87,7 +111,11 @@
               />
               <div class="elements__description">
                 <p class="elements__text block">Где-то</p>
-                <button class="elements__like-btn btn-hover"></button>
+                <button
+                  type="button"
+                  aria-label="Нравится"
+                  class="elements__like-btn btn-hover"
+                ></button>
               </div>
             </li>
             <li class="elements__element">
@@ -98,7 +126,11 @@
               />
               <div class="elements__description">
                 <p class="elements__text block">На камнях высоко</p>
-                <button class="elements__like-btn btn-hover"></button>
+                <button
+                  type="button"
+                  aria-label="Нравится"
+                  class="elements__like-btn btn-hover"
+                ></button>
               </div>
             </li>
           </ul>
@@ -110,17 +142,17 @@
       </footer>
     </div>
 
-    <section class="popup">
+    <div class="popup">
       <div class="popup__container">
         <button class="popup__close-btn btn-hover"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form">
-          <input type="text" class="popup__name" value="Текст"/>
-          <input type="text" class="popup__job" value="Еще текст"/>
-          <button class="popup__form-submit btn-hover">Сoхранить</button>
+          <input type="text" class="popup__name" value="Текст" />
+          <input type="text" class="popup__job" value="Еще текст" />
+          <button type="submit" class="popup__form-submit btn-hover">Сoхранить</button>
         </form>
       </div>
-    </section>
+    </div>
 
     <script src="./scripts/script.js"></script>
   </body>
