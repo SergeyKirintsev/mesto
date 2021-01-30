@@ -20,7 +20,7 @@
 
           <div class="profile__info">
             <div class="profile__row">
-              <p class="profile__name block">Человек с длинным именем</p>
+              <h1 class="profile__name block">Человек с длинным именем</h1>
               <button
                 type="button"
                 aria-label="Редактировать профиль"
@@ -48,7 +48,7 @@
                 class="elements__img"
               />
               <div class="elements__description">
-                <p class="elements__text block">Плесецк</p>
+                <h2 class="elements__text block">Плесецк</h2>
                 <button
                   type="button"
                   aria-label="Нравится"
@@ -63,7 +63,7 @@
                 class="elements__img"
               />
               <div class="elements__description">
-                <p class="elements__text block">Савинск</p>
+                <h2 class="elements__text block">Савинск</h2>
                 <button
                   type="button"
                   aria-label="Нравится"
@@ -78,7 +78,7 @@
                 class="elements__img"
               />
               <div class="elements__description">
-                <p class="elements__text block">Море</p>
+                <h2 class="elements__text block">Море</h2>
                 <button
                   type="button"
                   aria-label="Нравится"
@@ -93,9 +93,9 @@
                 class="elements__img"
               />
               <div class="elements__description">
-                <p class="elements__text block">
+                <h2 class="elements__text block">
                   Еще одно место с длинным названием
-                </p>
+                </h2>
                 <button
                   type="button"
                   aria-label="Нравится"
@@ -110,7 +110,7 @@
                 class="elements__img"
               />
               <div class="elements__description">
-                <p class="elements__text block">Где-то</p>
+                <h2 class="elements__text block">Где-то</h2>
                 <button
                   type="button"
                   aria-label="Нравится"
@@ -125,7 +125,7 @@
                 class="elements__img"
               />
               <div class="elements__description">
-                <p class="elements__text block">На камнях высоко</p>
+                <h2 class="elements__text block">На камнях высоко</h2>
                 <button
                   type="button"
                   aria-label="Нравится"
@@ -146,9 +146,9 @@
       <div class="popup__container">
         <button class="popup__close-btn btn-hover"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form">
-          <input type="text" class="popup__name" value="Текст" />
-          <input type="text" class="popup__job" value="Еще текст" />
+        <form name="edit-profile" class="popup__form">
+          <input type="text" name="name-profile" class="popup__input popup__input_type_name" value="Текст" />
+          <input type="text" name="job-profile" class="popup__input popup__input_type_job" value="Еще текст" />
           <button type="submit" class="popup__form-submit btn-hover">Сoхранить</button>
         </form>
       </div>
