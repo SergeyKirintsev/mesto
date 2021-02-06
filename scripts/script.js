@@ -46,10 +46,13 @@ const formElement = editPopup.querySelector(".popup__form");
 const formTitle = editPopup.querySelector(".popup__title");
 const nameInput = formElement.querySelector(".popup__input_type_name");
 const jobInput = formElement.querySelector(".popup__input_type_job");
-const closePopupBtn = editPopup.querySelector(".popup__close-btn");
-closePopupBtn.addEventListener("click", closePopup);
+
 const formSubmitBtn = document.querySelector(".popup__form-submit");
-//
+
+// Закрытие попапов
+const closePopupButtons = document.querySelectorAll(".popup__close-btn");
+closePopupButtons.forEach( btn => btn.addEventListener("click", closePopup));
+
 
 const listContainerEl = document.querySelector(".elements__list");
 const templateEl = document.querySelector(".template");
