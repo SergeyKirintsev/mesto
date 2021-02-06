@@ -2,35 +2,35 @@ const initialCards = [
   {
     name: "Архыз",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+      "https://images.unsplash.com/photo-1612409210157-fae7e07df828?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2852&q=80",
   },
   {
     name: "Челябинская область",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+      "https://images.unsplash.com/photo-1612583386053-87b6261ff7b0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1268&q=80",
   },
   {
     name: "Иваново",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+      "https://images.unsplash.com/photo-1612588086184-89c0b2d69467?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80",
   },
   {
     name: "Камчатка",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+      "https://images.unsplash.com/photo-1612609819547-e68a5c32581a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1268&q=80",
   },
   {
     name: "Холмогорский район",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+      "https://images.unsplash.com/photo-1599824425751-b8e0a676a647?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2104&q=80",
   },
   {
     name: "Байкал",
     link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+      "https://images.unsplash.com/photo-1612538908022-3852d47746a5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80",
   },
 ];
-// Кнопка добавить карточку 
+// Кнопка добавить карточку
 const addCardBtn = document.querySelector(".profile__add-btn");
 addCardBtn.addEventListener("click", handleAddCard);
 
@@ -51,8 +51,7 @@ const formSubmitBtn = document.querySelector(".popup__form-submit");
 
 // Закрытие попапов
 const closePopupButtons = document.querySelectorAll(".popup__close-btn");
-closePopupButtons.forEach( btn => btn.addEventListener("click", closePopup));
-
+closePopupButtons.forEach((btn) => btn.addEventListener("click", closePopup));
 
 const listContainerEl = document.querySelector(".elements__list");
 const templateEl = document.querySelector(".template");
@@ -72,6 +71,7 @@ function getCard({ name, link }) {
   const imgEl = newCard.querySelector(".elements__img");
   imgEl.setAttribute("src", link);
   imgEl.setAttribute("alt", name);
+  imgEl.addEventListener("click", handleViewImage);
 
   return newCard;
 }
@@ -87,7 +87,6 @@ function handleDeleteCard(event) {
 }
 
 function closePopup(event) {
-  console.log("closePopup");
   const targetEl = event.target;
   const popup = targetEl.closest(".popup");
   popup.classList.remove("popup_opened");
@@ -105,20 +104,18 @@ function handleToggleLike(event) {
 }
 
 function handleEditProfile() {
-  console.log("handleEditProfile");
   formTitle.textContent = "Редактировать профиль";
   nameInput.value = nameProfile.textContent.trim();
   nameInput.placeholder = "Имя";
   jobInput.value = jobProfile.textContent.trim();
   jobInput.placeholder = "Увлечение/работа";
-  formSubmitBtn.textContent = 'Сохранить';
+  formSubmitBtn.textContent = "Сохранить";
 
   formElement.addEventListener("submit", profileFormSubmitHandler);
   openPopup();
 }
 
 function profileFormSubmitHandler(event) {
-  console.log("profileFormSubmitHandler");
   event.preventDefault();
 
   nameProfile.textContent = nameInput.value.trim();
@@ -129,20 +126,18 @@ function profileFormSubmitHandler(event) {
 }
 
 function handleAddCard() {
-  console.log("handleAddCard");
   formTitle.textContent = "Новое место";
   nameInput.value = "";
   jobInput.value = "";
   nameInput.placeholder = "Название";
   jobInput.placeholder = "Ссылка на картинку";
-  formSubmitBtn.textContent = 'Создать';
+  formSubmitBtn.textContent = "Создать";
 
   formElement.addEventListener("submit", addCardSubmitHandler);
   openPopup();
 }
 
 function addCardSubmitHandler(event) {
-  console.log("addCardSubmitHandler");
   event.preventDefault();
 
   const name = nameInput.value.trim();
@@ -152,6 +147,16 @@ function addCardSubmitHandler(event) {
 
   formElement.removeEventListener("submit", addCardSubmitHandler);
   editPopup.classList.remove("popup_opened");
+}
+
+function handleViewImage(event) {
+  const imgPopup = document.querySelector(".popup_img_view");
+  const img = imgPopup.querySelector(".popup__image");
+  const imgCaption = imgPopup.querySelector(".popup__caption");
+  imgCaption.textContent = event.target.alt;
+  img.src = event.target.src;
+
+  imgPopup.classList.add("popup_opened");
 }
 
 initialCards.forEach((card) => renderCard(getCard(card)));
