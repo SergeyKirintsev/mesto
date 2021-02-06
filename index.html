@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
     <title>Путешествия по России</title>
+    <script src="./scripts/script.js" defer></script>
   </head>
 
   <body class="body">
     <div class="page">
-
       <header class="header">
         <img class="header__logo" src="./images/logo.svg" alt="логотип" />
       </header>
@@ -40,100 +40,7 @@
         </section>
 
         <section class="elements">
-          <ul class="elements__list">
-            <li class="elements__element">
-              <img
-                src="./images/unsplash/1.jpg"
-                alt="Плесецк"
-                class="elements__img"
-              />
-              <div class="elements__description">
-                <h2 class="elements__text block">Плесецк</h2>
-                <button
-                  type="button"
-                  aria-label="Нравится"
-                  class="elements__like-btn btn-hover"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__element">
-              <img
-                src="./images/unsplash/cristina-pop-0tEVhJ0O0L8-unsplash.jpg"
-                alt="Савинск"
-                class="elements__img"
-              />
-              <div class="elements__description">
-                <h2 class="elements__text block">Савинск</h2>
-                <button
-                  type="button"
-                  aria-label="Нравится"
-                  class="elements__like-btn btn-hover"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__element">
-              <img
-                src="./images/unsplash/gabe-pierce-QLSg-fslbVo-unsplash.jpg"
-                alt="Море"
-                class="elements__img"
-              />
-              <div class="elements__description">
-                <h2 class="elements__text block">Море</h2>
-                <button
-                  type="button"
-                  aria-label="Нравится"
-                  class="elements__like-btn btn-hover"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__element">
-              <img
-                src="./images/unsplash/jon-tyson-h-3OIM46Mmc-unsplash.jpg"
-                alt="Место с длинным названием"
-                class="elements__img"
-              />
-              <div class="elements__description">
-                <h2 class="elements__text block">
-                  Еще одно место с длинным названием
-                </h2>
-                <button
-                  type="button"
-                  aria-label="Нравится"
-                  class="elements__like-btn btn-hover"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__element">
-              <img
-                src="./images/unsplash/laura-nyhuis-LzxYO0obJh8-unsplash.jpg"
-                alt="Где-то"
-                class="elements__img"
-              />
-              <div class="elements__description">
-                <h2 class="elements__text block">Где-то</h2>
-                <button
-                  type="button"
-                  aria-label="Нравится"
-                  class="elements__like-btn btn-hover"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__element">
-              <img
-                src="./images/unsplash/mike-palmowski-MoyT1ZB07J0-unsplash.jpg"
-                alt="На камнях"
-                class="elements__img"
-              />
-              <div class="elements__description">
-                <h2 class="elements__text block">На камнях высоко</h2>
-                <button
-                  type="button"
-                  aria-label="Нравится"
-                  class="elements__like-btn btn-hover"
-                ></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="elements__list"></ul>
         </section>
       </main>
 
@@ -147,13 +54,46 @@
         <button type="button" class="popup__close-btn btn-hover"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="edit-profile" class="popup__form">
-          <input type="text" name="name-profile" class="popup__input popup__input_type_name" value="Текст" />
-          <input type="text" name="job-profile" class="popup__input popup__input_type_job" value="Еще текст" />
-          <button type="submit" class="popup__form-submit btn-hover">Сoхранить</button>
+          <input
+            type="text"
+            name="name-profile"
+            class="popup__input popup__input_type_name"
+            value="Текст"
+          />
+          <input
+            type="text"
+            name="job-profile"
+            class="popup__input popup__input_type_job"
+            value="Еще текст"
+          />
+          <button type="submit" class="popup__form-submit btn-hover">
+            Сoхранить
+          </button>
         </form>
       </div>
     </div>
 
-    <script src="./scripts/script.js"></script>
+    <template class="template">
+      <li class="elements__element">
+        <button
+          type="button"
+          aria-label="Удалить"
+          class="elements__trash-btn btn-hover"
+        ></button>
+        <img
+          src="./images/unsplash/1.jpg"
+          alt="Плесецк"
+          class="elements__img"
+        />
+        <div class="elements__description">
+          <h2 class="elements__text block">Плесецк</h2>
+          <button
+            type="button"
+            aria-label="Нравится"
+            class="elements__like-btn btn-hover"
+          ></button>
+        </div>
+      </li>
+    </template>
   </body>
 </html>
