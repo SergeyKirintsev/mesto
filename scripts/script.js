@@ -29,14 +29,14 @@ const addCardBtn = document.querySelector(".profile__add-btn");
 const closePopupButtons = document.querySelectorAll(".popup__close-btn");
 const cardsContainerEl = document.querySelector(".elements__list");
 const templateCardEl = document.querySelector(".template");
-const popupsEl = document.querySelectorAll(".popup");
+// const popupsEl = document.querySelectorAll(".popup");
 
 // Навешиваем обработчики
-popupsEl.forEach((popup) => {
-  popup.addEventListener("click", function(event) {
-    if (event.target === this) closePopup(this);
-  });
-});
+// popupsEl.forEach((popup) => {
+//   popup.addEventListener("click", function(event) {
+//     if (event.target === this) closePopup(this);
+//   });
+// });
 
 editProfileBtn.addEventListener("click", handleEditProfile);
 editForm.addEventListener("submit", profileFormSubmitHandler);
@@ -99,10 +99,21 @@ function handleViewImage(event) {
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  popup.removeEventListener("click", closePopupAnotherCase);
+  document.removeEventListener("keydown", closePopupAnotherCase);
+}
+
+function closePopupAnotherCase(event) {
+  const popup = document.querySelector(".popup_opened");
+  if (event.key === "Escape" || event.target === popup) {
+    closePopup(popup);
+  }
 }
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  popup.addEventListener("click", closePopupAnotherCase);
+  document.addEventListener("keydown", closePopupAnotherCase);
 }
 
 function handleEditProfile() {
