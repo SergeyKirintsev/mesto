@@ -29,8 +29,15 @@ const addCardBtn = document.querySelector(".profile__add-btn");
 const closePopupButtons = document.querySelectorAll(".popup__close-btn");
 const cardsContainerEl = document.querySelector(".elements__list");
 const templateCardEl = document.querySelector(".template");
+const popupsEl = document.querySelectorAll(".popup");
 
 // Навешиваем обработчики
+popupsEl.forEach((popup) => {
+  popup.addEventListener("click", function(event) {
+    if (event.target === this) closePopup(this);
+  });
+});
+
 editProfileBtn.addEventListener("click", handleEditProfile);
 editForm.addEventListener("submit", profileFormSubmitHandler);
 
