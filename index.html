@@ -63,6 +63,8 @@
               value=""
               placeholder="Имя"
               required
+              minlength="2"
+              maxlength="40"
             />
             <span class="popup__input-error name-profile-error">teetetetetete</span>
           </section>
@@ -75,6 +77,8 @@
               value=""
               placeholder="Увлечение/работа"
               required
+              minlength="2"
+              maxlength="200"
             />
             <span class="popup__input-error popup__input-error_active job-profile-error">teetetetetete</span>
           </section>
@@ -100,13 +104,15 @@
               value=""
               placeholder="Название"
               required
+              minlength="2"
+              maxlength="30"
             />
             <span class="popup__input-error card-name-error"></span>
           </section>  
           <section class="popup__section">
             <input
               id="card-link"
-              type="text"
+              type="url"
               name="card-link"
               class="popup__input popup__input_type_img-link"
               value=""
@@ -162,6 +168,7 @@
 
     <script src="./scripts/data.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
 
   </body>
 </html>
