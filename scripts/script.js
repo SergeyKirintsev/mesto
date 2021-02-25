@@ -102,16 +102,20 @@ function closePopupAnotherCase(event) {
   }
 }
 
-function clearInputError(popup) {
+function checkForm(popup) {
   const errorElements = popup.querySelectorAll(configValidate.inputErrorClass);
   errorElements.forEach(el => {
     el.textContent = "";
     el.classList.remove(configValidate.errorClass);
   })
+
+  const inputList = Array.from(popup.querySelectorAll(configValidate.inputSelector));
+  const buttonElement = popup.querySelector(configValidate.submitButtonSelector); 
+  toggleButtonState(inputList, buttonElement, configValidate); 
 }
 
 function openPopup(popup) {
-  clearInputError(popup);
+  checkForm(popup);
 
   popup.classList.add("popup_opened");
   popup.addEventListener("pointerdown", closePopupAnotherCase);
