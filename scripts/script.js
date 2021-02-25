@@ -102,7 +102,17 @@ function closePopupAnotherCase(event) {
   }
 }
 
+function clearInputError(popup) {
+  const errorElements = popup.querySelectorAll(configValidate.inputErrorClass);
+  errorElements.forEach(el => {
+    el.textContent = "";
+    el.classList.remove(configValidate.errorClass);
+  })
+}
+
 function openPopup(popup) {
+  clearInputError(popup);
+
   popup.classList.add("popup_opened");
   popup.addEventListener("pointerdown", closePopupAnotherCase);
   document.addEventListener("keydown", closePopupAnotherCase);
@@ -125,6 +135,7 @@ function profileFormSubmitHandler(event) {
 }
 
 function handleAddCard() {
+  addCardForm.reset();
   openPopup(addCardPopup);
 }
 

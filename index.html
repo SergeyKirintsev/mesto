@@ -53,7 +53,7 @@
       <div class="popup__container">
         <button type="button" class="popup__close-btn btn-hover"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="edit-profile" class="popup__form">
+        <form name="edit-profile" class="popup__form" novalidate>
           <section class="popup__section">
             <input
               id="name-profile"
@@ -66,7 +66,7 @@
               minlength="2"
               maxlength="40"
             />
-            <span class="popup__input-error name-profile-error">teetetetetete</span>
+            <span class="popup__input-error name-profile-error"></span>
           </section>
           <section class="popup__section">
             <input
@@ -80,7 +80,7 @@
               minlength="2"
               maxlength="200"
             />
-            <span class="popup__input-error popup__input-error_active job-profile-error">teetetetetete</span>
+            <span class="popup__input-error job-profile-error"></span>
           </section>
           <button type="submit" class="popup__form-submit btn-hover">
             Сoхранить
@@ -94,7 +94,7 @@
       <div class="popup__container">
         <button type="button" class="popup__close-btn btn-hover"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form name="add-card" class="popup__form">
+        <form name="add-card" class="popup__form" novalidate>
           <section class="popup__section">
             <input
               id="card-name"
