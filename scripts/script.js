@@ -1,7 +1,5 @@
 "use strict";
 
-import { initialCards } from "./data.js";
-
 // Профиль
 const nameProfile = document.querySelector(".profile__name");
 const jobProfile = document.querySelector(".profile__profession");
@@ -29,14 +27,8 @@ const addCardBtn = document.querySelector(".profile__add-btn");
 const closePopupButtons = document.querySelectorAll(".popup__close-btn");
 const cardsContainerEl = document.querySelector(".elements__list");
 const templateCardEl = document.querySelector(".template");
-// const popupsEl = document.querySelectorAll(".popup");
 
 // Навешиваем обработчики
-// popupsEl.forEach((popup) => {
-//   popup.addEventListener("click", function(event) {
-//     if (event.target === this) closePopup(this);
-//   });
-// });
 
 editProfileBtn.addEventListener("click", handleEditProfile);
 editForm.addEventListener("submit", profileFormSubmitHandler);
@@ -99,7 +91,7 @@ function handleViewImage(event) {
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  popup.removeEventListener("click", closePopupAnotherCase);
+  popup.removeEventListener("pointerdown", closePopupAnotherCase);
   document.removeEventListener("keydown", closePopupAnotherCase);
 }
 
@@ -112,7 +104,7 @@ function closePopupAnotherCase(event) {
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  popup.addEventListener("click", closePopupAnotherCase);
+  popup.addEventListener("pointerdown", closePopupAnotherCase);
   document.addEventListener("keydown", closePopupAnotherCase);
 }
 
