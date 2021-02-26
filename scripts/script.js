@@ -84,9 +84,10 @@ function handleToggleLike(event) {
 
 function handleViewImage(event) {
   imgEl.src = event.target.src;
+  imgEl.alt = event.target.alt;
   imgCaption.textContent = event.target.alt;
-
-  openPopup(imgPopup);
+  const checkForm = false;
+  openPopup(imgPopup, checkForm);
 }
 
 function closePopup(popup) {
@@ -114,8 +115,8 @@ function checkForm(popup) {
   toggleButtonState(inputList, buttonElement, configValidate); 
 }
 
-function openPopup(popup) {
-  checkForm(popup);
+function openPopup(popup, check = true) {
+  if (check) checkForm(popup);
 
   popup.classList.add("popup_opened");
   popup.addEventListener("pointerdown", closePopupAnotherCase);
