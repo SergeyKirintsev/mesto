@@ -1,6 +1,6 @@
 "use strict";
 import Card from "./card.js";
-import {initialCards} from "./data.js";
+import initialCards from "./data.js";
 
 // Профиль
 const nameProfile = document.querySelector(".profile__name");
@@ -28,7 +28,6 @@ const imgCaption = imgPopup.querySelector(".popup__caption");
 const addCardBtn = document.querySelector(".profile__add-btn");
 const closePopupButtons = document.querySelectorAll(".popup__close-btn");
 const cardsContainerEl = document.querySelector(".elements__list");
-const templateCardEl = document.querySelector(".template");
 
 // Навешиваем обработчики
 
@@ -50,25 +49,10 @@ function closePopupOnBtn(event) {
   closePopup(popup);
 }
 
-function renderCard(cardEl) {
-  cardsContainerEl.prepend(cardEl);
-}
-
-
-// function handleDeleteCard(event) {
-//   const targetEl = event.target;
-//   const targetItem = targetEl.closest(".elements__element");
-//   targetItem.remove();
-// }
-
-// function handleToggleLike(event) {
-//   event.target.classList.toggle("elements__like-btn_active");
-// }
-
-function handleViewImage(event) {
-  imgEl.src = event.target.src;
-  imgEl.alt = event.target.alt;
-  imgCaption.textContent = event.target.alt;
+function handleViewImage(name, link) {
+  imgEl.src = link;
+  imgEl.alt =name;
+  imgCaption.textContent = name;
   const checkForm = false;
   openPopup(imgPopup, checkForm);
 }
@@ -127,21 +111,28 @@ function handleAddCard() {
   openPopup(addCardPopup);
 }
 
+function getCard(data) {
+  const card = new Card(data, ".template", handleViewImage);
+  return card.generateCard();
+}
+
+function renderCard(cardEl) {
+  cardsContainerEl.prepend(cardEl);
+}
+
 function addCardSubmitHandler(event) {
   event.preventDefault();
 
   const name = imgNameInput.value.trim();
   const link = imgLinkInput.value.trim();
 
-  // renderCard(generateCard({ name, link }));
+  renderCard(getCard({ name, link }));
 
   addCardForm.reset();
   closePopup(addCardPopup);
 }
 
 initialCards.forEach((data) => {
-  const card = new Card(data, ".template");
-  const cardElement = card.generateCard();
-  renderCard(cardElement);
+  renderCard(getCard(data));
 });
 
