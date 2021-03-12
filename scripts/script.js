@@ -1,4 +1,6 @@
 "use strict";
+import Card from "./card.js";
+import {initialCards} from "./data.js";
 
 // Профиль
 const nameProfile = document.querySelector(".profile__name");
@@ -52,35 +54,16 @@ function renderCard(cardEl) {
   cardsContainerEl.prepend(cardEl);
 }
 
-function getCard({ name, link }) {
-  const newCardEl = templateCardEl.content.cloneNode(true);
 
-  const headerEl = newCardEl.querySelector(".elements__text");
-  headerEl.textContent = name;
+// function handleDeleteCard(event) {
+//   const targetEl = event.target;
+//   const targetItem = targetEl.closest(".elements__element");
+//   targetItem.remove();
+// }
 
-  const removeBtn = newCardEl.querySelector(".elements__trash-btn");
-  removeBtn.addEventListener("click", handleDeleteCard);
-
-  const likeBtn = newCardEl.querySelector(".elements__like-btn");
-  likeBtn.addEventListener("click", handleToggleLike);
-
-  const imgEl = newCardEl.querySelector(".elements__img");
-  imgEl.setAttribute("src", link);
-  imgEl.setAttribute("alt", name);
-  imgEl.addEventListener("click", handleViewImage);
-
-  return newCardEl;
-}
-
-function handleDeleteCard(event) {
-  const targetEl = event.target;
-  const targetItem = targetEl.closest(".elements__element");
-  targetItem.remove();
-}
-
-function handleToggleLike(event) {
-  event.target.classList.toggle("elements__like-btn_active");
-}
+// function handleToggleLike(event) {
+//   event.target.classList.toggle("elements__like-btn_active");
+// }
 
 function handleViewImage(event) {
   imgEl.src = event.target.src;
@@ -110,8 +93,8 @@ function checkForm(popup) {
   })
 
   const inputList = Array.from(popup.querySelectorAll(configValidate.inputSelector));
-  const buttonElement = popup.querySelector(configValidate.submitButtonSelector); 
-  toggleButtonState(inputList, buttonElement, configValidate); 
+  const buttonElement = popup.querySelector(configValidate.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, configValidate);
 }
 
 function openPopup(popup) {
@@ -149,10 +132,15 @@ function addCardSubmitHandler(event) {
   const name = imgNameInput.value.trim();
   const link = imgLinkInput.value.trim();
 
-  renderCard(getCard({ name, link }));
+  // renderCard(generateCard({ name, link }));
 
   addCardForm.reset();
   closePopup(addCardPopup);
 }
 
-initialCards.forEach((card) => renderCard(getCard(card)));
+initialCards.forEach((data) => {
+  const card = new Card(data, ".template");
+  const cardElement = card.generateCard();
+  renderCard(cardElement);
+});
+

@@ -1,6 +1,6 @@
 'use strict';
 
-const initialCards = [
+export const initialCards = [
   {
     name: "Архыз",
     link:
