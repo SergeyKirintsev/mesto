@@ -39,7 +39,32 @@
         </section>
 
         <section class="elements">
-          <ul class="elements__list"></ul>
+          <ul class="elements__list">
+
+            <template class="template">
+              <li class="elements__element">
+                <button
+                  type="button"
+                  aria-label="Удалить"
+                  class="elements__trash-btn btn-hover"
+                ></button>
+                <img
+                  src="./images/unsplash/1.jpg"
+                  alt="Плесецк"
+                  class="elements__img"
+                />
+                <div class="elements__description">
+                  <h2 class="elements__text block">Плесецк</h2>
+                  <button
+                    type="button"
+                    aria-label="Нравится"
+                    class="elements__like-btn btn-hover"
+                  ></button>
+                </div>
+              </li>
+            </template>
+
+          </ul>
         </section>
       </main>
 
@@ -143,28 +168,7 @@
       </div>
     </div>
 
-    <template class="template">
-      <li class="elements__element">
-        <button
-          type="button"
-          aria-label="Удалить"
-          class="elements__trash-btn btn-hover"
-        ></button>
-        <img
-          src="./images/unsplash/1.jpg"
-          alt="Плесецк"
-          class="elements__img"
-        />
-        <div class="elements__description">
-          <h2 class="elements__text block">Плесецк</h2>
-          <button
-            type="button"
-            aria-label="Нравится"
-            class="elements__like-btn btn-hover"
-          ></button>
-        </div>
-      </li>
-    </template>
+
 
 <!--    <script src="./scripts/data.js"></script>-->
     <script type="module" src="./scripts/script.js"></script>
