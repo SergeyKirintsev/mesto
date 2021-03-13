@@ -1,6 +1,7 @@
 "use strict";
 import Card from "./card.js";
-import initialCards from "./data.js";
+import { initialCards, configValidate } from "./data.js";
+import FormValidator from "./formValidator.js";
 
 // Профиль
 const nameProfile = document.querySelector(".profile__name");
@@ -79,7 +80,7 @@ function checkForm(popup) {
 
   const inputList = Array.from(popup.querySelectorAll(configValidate.inputSelector));
   const buttonElement = popup.querySelector(configValidate.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, configValidate);
+  formValidator.toggleButtonState(inputList, buttonElement);
 }
 
 function openPopup(popup, check = true) {
@@ -136,3 +137,5 @@ initialCards.forEach((data) => {
   renderCard(getCard(data));
 });
 
+const formValidator = new FormValidator(configValidate);
+formValidator.enableValidation();
