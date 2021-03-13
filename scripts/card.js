@@ -1,18 +1,17 @@
 export default class Card {
-  constructor(data, cardSelector, handleViewImage) {
+  constructor(data, handleViewImage) {
     this._name = data.name;
     this._link = data.link;
-    this._cardSelector = cardSelector;
     this._handleViewImage = handleViewImage;
   }
 
   _getTemplate() {
     return document
-      .querySelector(this._cardSelector)
+      .querySelector(".template")
       .content
       .querySelector('.elements__element')
       .cloneNode(true);
-    }
+  }
 
   generateCard() {
     this._element = this._getTemplate();
