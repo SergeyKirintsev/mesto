@@ -1,6 +1,6 @@
 "use strict";
 import Card from "./card.js";
-import { initialCards, configValidate, ESCAPE } from "./data.js";
+import { initialCards, configValidate, ESCAPE } from "./constants.js";
 import FormValidator from "./formValidator.js";
 
 // Профиль
