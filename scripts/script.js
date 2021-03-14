@@ -71,14 +71,7 @@ function closePopupAnotherCase(event) {
   }
 }
 
-function checkForm() {
-  profileFormValidator.checkForm();
-  addCardFormValidator.checkForm();
-}
-
-function openPopup(popup, check = true) {
-  if (check) checkForm();
-
+function openPopup(popup) {
   popup.classList.add("popup_opened");
   popup.addEventListener("pointerdown", closePopupAnotherCase);
   document.addEventListener("keydown", closePopupAnotherCase);
@@ -87,7 +80,7 @@ function openPopup(popup, check = true) {
 function handleEditProfile() {
   nameInput.value = nameProfile.textContent.trim();
   jobInput.value = jobProfile.textContent.trim();
-
+  profileFormValidator.checkForm();
   openPopup(profilePopup);
 }
 
@@ -102,6 +95,7 @@ function profileFormSubmitHandler(event) {
 
 function handleAddCard() {
   addCardForm.reset();
+  addCardFormValidator.checkForm();
   openPopup(addCardPopup);
 }
 
