@@ -1,6 +1,6 @@
 "use strict";
 import Card from "./card.js";
-import { initialCards, configValidate } from "./data.js";
+import { initialCards, configValidate, ESCAPE } from "./data.js";
 import FormValidator from "./formValidator.js";
 
 // Профиль
@@ -66,7 +66,7 @@ function closePopup(popup) {
 
 function closePopupAnotherCase(event) {
   const popup = document.querySelector(".popup_opened");
-  if (event.key === "Escape" || event.target === popup) {
+  if (event.key === ESCAPE || event.target === popup) {
     closePopup(popup);
   }
 }

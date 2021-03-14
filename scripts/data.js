@@ -1,5 +1,7 @@
 'use strict';
 
+const ESCAPE = "Escape";
+
 const initialCards = [
   {
     name: "Архыз",
@@ -42,4 +44,4 @@ const configValidate = {
   errorClass: "popup__input-error_active",
 };
 
-export { initialCards, configValidate }
+export { initialCards, configValidate, ESCAPE }
