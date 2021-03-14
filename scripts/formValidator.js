@@ -1,11 +1,11 @@
 export default class FormValidator {
-  constructor(settings) {
-    this._formSelector = settings.formSelector;
+  constructor(settings, form) {
     this._inputSelector = settings.inputSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
+    this._form = form;
   }
 
   _showInputError = (inputElement, errorMessage) => {
@@ -69,11 +69,18 @@ export default class FormValidator {
   };
 
   enableValidation() {
-    const formElements = document.querySelectorAll(this._formSelector);
-    const formList = Array.from(formElements);
-
-    formList.forEach((formElement) => {
-      this._setEventListeners(formElement);
-    });
+      this._setEventListeners(this._form);
   };
+
+  checkForm() {
+    const errorElements = this._form.querySelectorAll(this._inputErrorClass);
+    errorElements.forEach(el => {
+      el.textContent = "";
+      el.classList.remove(this._inputErrorClass);
+    })
+
+    const inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+    const buttonElement = this._form.querySelector(this._submitButtonSelector);
+    this.toggleButtonState(inputList, buttonElement);
+  }
 }

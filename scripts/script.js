@@ -71,20 +71,13 @@ function closePopupAnotherCase(event) {
   }
 }
 
-function checkForm(popup) {
-  const errorElements = popup.querySelectorAll(configValidate.inputErrorClass);
-  errorElements.forEach(el => {
-    el.textContent = "";
-    el.classList.remove(configValidate.errorClass);
-  })
-
-  const inputList = Array.from(popup.querySelectorAll(configValidate.inputSelector));
-  const buttonElement = popup.querySelector(configValidate.submitButtonSelector);
-  formValidator.toggleButtonState(inputList, buttonElement);
+function checkForm() {
+  profileFormValidator.checkForm();
+  addCardFormValidator.checkForm();
 }
 
 function openPopup(popup, check = true) {
-  if (check) checkForm(popup);
+  if (check) checkForm();
 
   popup.classList.add("popup_opened");
   popup.addEventListener("pointerdown", closePopupAnotherCase);
@@ -137,5 +130,8 @@ initialCards.forEach((data) => {
   renderCard(getCard(data));
 });
 
-const formValidator = new FormValidator(configValidate);
-formValidator.enableValidation();
+const profileFormValidator = new FormValidator(configValidate, profileForm);
+profileFormValidator.enableValidation();
+
+const addCardFormValidator = new FormValidator(configValidate, addCardForm);
+addCardFormValidator.enableValidation();
