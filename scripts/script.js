@@ -9,10 +9,10 @@ const jobProfile = document.querySelector(".profile__profession");
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 
 // Форма редактирования профиля
-const editPopup = document.querySelector(".popup_edit_profile");
-const editForm = editPopup.querySelector(".popup__form");
-const nameInput = editForm.querySelector(".popup__input_type_name");
-const jobInput = editForm.querySelector(".popup__input_type_job");
+const profilePopup = document.querySelector(".popup_edit_profile");
+const profileForm = profilePopup.querySelector(".popup__form");
+const nameInput = profileForm.querySelector(".popup__input_type_name");
+const jobInput = profileForm.querySelector(".popup__input_type_job");
 
 // Форма добавления карточки
 const addCardPopup = document.querySelector(".popup_add_card");
@@ -33,7 +33,7 @@ const cardsContainerEl = document.querySelector(".elements__list");
 // Навешиваем обработчики
 
 editProfileBtn.addEventListener("click", handleEditProfile);
-editForm.addEventListener("submit", profileFormSubmitHandler);
+profileForm.addEventListener("submit", profileFormSubmitHandler);
 
 addCardBtn.addEventListener("click", handleAddCard);
 addCardForm.addEventListener("submit", addCardSubmitHandler);
@@ -95,7 +95,7 @@ function handleEditProfile() {
   nameInput.value = nameProfile.textContent.trim();
   jobInput.value = jobProfile.textContent.trim();
 
-  openPopup(editPopup);
+  openPopup(profilePopup);
 }
 
 function profileFormSubmitHandler(event) {
@@ -104,7 +104,7 @@ function profileFormSubmitHandler(event) {
   nameProfile.textContent = nameInput.value.trim();
   jobProfile.textContent = jobInput.value.trim();
 
-  closePopup(editPopup);
+  closePopup(profilePopup);
 }
 
 function handleAddCard() {
