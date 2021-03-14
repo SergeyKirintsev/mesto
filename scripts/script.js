@@ -113,7 +113,7 @@ function handleAddCard() {
 }
 
 function getCard(data) {
-  const card = new Card(data, handleViewImage);
+  const card = new Card(data, handleViewImage, ".card-template");
   return card.generateCard();
 }
 
