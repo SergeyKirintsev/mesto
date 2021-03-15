@@ -47,13 +47,13 @@ export default class FormValidator {
     }
   };
 
-  _setEventListeners = (formElement) => {
-    formElement.addEventListener("submit",(event) => {
+  _setEventListeners = () => {
+    this._form.addEventListener("submit", (event) => {
       event.preventDefault();
     });
 
-    this._inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
-    this._buttonElement = formElement.querySelector(this._submitButtonSelector);
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._form.querySelector(this._submitButtonSelector);
 
     const inputListIterator = (inputElement) => {
       const handleInput = () => {
@@ -69,7 +69,7 @@ export default class FormValidator {
   };
 
   enableValidation() {
-      this._setEventListeners(this._form);
+    this._setEventListeners();
   };
 
   clearValidation() {
