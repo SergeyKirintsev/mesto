@@ -27,8 +27,12 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._element.remove();
-    this._element = null;
+    this._element.style.transition = "0.5s";
+    this._element.style.transform = "scale(0)";
+    setTimeout(() => {
+      this._element.remove();
+      this._element = null;
+    }, 500);
   }
 
   _handleToggleLike() {

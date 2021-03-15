@@ -54,8 +54,7 @@ function handleViewImage(name, link) {
   imgEl.src = link;
   imgEl.alt =name;
   imgCaption.textContent = name;
-  const checkForm = false;
-  openPopup(imgPopup, checkForm);
+  openPopup(imgPopup);
 }
 
 function closePopup(popup) {
@@ -80,7 +79,7 @@ function openPopup(popup) {
 function handleEditProfile() {
   nameInput.value = nameProfile.textContent.trim();
   jobInput.value = jobProfile.textContent.trim();
-  profileFormValidator.checkForm();
+  profileFormValidator.clearValidation();
   openPopup(profilePopup);
 }
 
@@ -95,7 +94,7 @@ function profileFormSubmitHandler(event) {
 
 function handleAddCard() {
   addCardForm.reset();
-  addCardFormValidator.checkForm();
+  addCardFormValidator.clearValidation();
   openPopup(addCardPopup);
 }
 
