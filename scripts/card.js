@@ -27,12 +27,12 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._element.style.transition = "0.5s";
-    this._element.style.transform = "scale(0)";
+    this._element.style.transition = "0.6s";
+    this._element.style.transform = "rotateY(90deg)";
     setTimeout(() => {
       this._element.remove();
       this._element = null;
-    }, 500);
+    }, 600);
   }
 
   _handleToggleLike() {
