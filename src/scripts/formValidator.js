@@ -9,10 +9,10 @@ export default class FormValidator {
   }
 
   _showInputError = (inputElement, errorMessage) => {
-    // const errorElement = document.querySelector(`.${inputElement.id}-error`);
-    //
-    // errorElement.textContent = errorMessage;
-    // errorElement.classList.add(this._errorClass);
+    const errorElement = document.querySelector(`.${inputElement.id}-error`);
+
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._errorClass);
   };
 
   _hideInputError = (inputElement) => {
