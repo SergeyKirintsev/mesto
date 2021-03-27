@@ -1,9 +1,9 @@
 "use strict";
 import ("./index.css");
 
-import Card from "../components/card.js";
+import Card from "../components/Card.js";
 import { initialCards, configValidate, ESCAPE } from "../utils/constants.js";
-import FormValidator from "../components/formValidator.js";
+import FormValidator from "../components/FormValidator.js";
 
 // Профиль
 const nameProfile = document.querySelector(".profile__name");
