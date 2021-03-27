@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: { main: "./src/scripts/index.js" },
+  entry: { main: "./src/pages/index.js" },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
@@ -24,11 +24,11 @@ module.exports = {
       // добавим в него объект правил для бабеля
       {
         // регулярное выражение, которое ищет все js файлы
-        test: /\.js$/,
+        "test": /\.js$/,
         // при обработке этих файлов нужно использовать babel-loader
-        use: "babel-loader",
+        "use": "babel-loader",
         // исключает папку node_modules, файлы в ней обрабатывать не нужно
-        exclude: "/node_modules/",
+        "exclude": "/node_modules/",
       },
       {
         // регулярное выражение, которое ищет все файлы с такими расширениями
