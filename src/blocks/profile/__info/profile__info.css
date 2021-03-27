@@ -1,0 +1,18 @@
+.profile__info {
+  margin-left: 30px;
+  margin-right: auto;
+
+  max-width: 336px;
+}
+
+@media screen and (max-width: 1000px) {
+  .profile__info {
+      margin: 22px auto 36px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__info {
+      max-width: 282px;
+  }
+}
