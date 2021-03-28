@@ -1,6 +1,4 @@
-'use strict';
-
-const ESCAPE = "Escape";
+"use strict";
 
 const initialCards = [
   {
@@ -44,4 +42,22 @@ const configValidate = {
   errorClass: "popup__input-error_active",
 };
 
-export { initialCards, configValidate, ESCAPE }
+const editProfileBtn = document.querySelector(".profile__edit-btn");
+
+const profilePopupEl = document.querySelector(".popup_edit_profile");
+const profileForm = profilePopupEl.querySelector(".popup__form");
+const nameInput = profileForm.querySelector(".popup__input_type_name");
+const jobInput = profileForm.querySelector(".popup__input_type_job");
+
+const addCardPopup = document.querySelector(".popup_add_card");
+const addCardForm = addCardPopup.querySelector(".popup__form");
+
+export {
+  initialCards,
+  configValidate,
+  editProfileBtn,
+  nameInput,
+  jobInput,
+  profileForm,
+  addCardForm,
+};
