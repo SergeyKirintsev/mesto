@@ -6,6 +6,7 @@ import("./index.css");
 import Card from "../components/Card.js";
 import { initialCards, configValidate } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
+import { PopupWithImage } from "../components/PopupWithImage";
 
 // Профиль
 const nameProfile = document.querySelector(".profile__name");
@@ -15,36 +16,27 @@ const editProfileBtn = document.querySelector(".profile__edit-btn");
 // Форма редактирования профиля
 const profilePopup = document.querySelector(".popup_edit_profile");
 const profileForm = profilePopup.querySelector(".popup__form");
-const nameInput = profileForm.querySelector(".popup__input_type_name");
-const jobInput = profileForm.querySelector(".popup__input_type_job");
+// const nameInput = profileForm.querySelector(".popup__input_type_name");
+// const jobInput = profileForm.querySelector(".popup__input_type_job");
 
 // Форма добавления карточки
 const addCardPopup = document.querySelector(".popup_add_card");
 const addCardForm = addCardPopup.querySelector(".popup__form");
-const imgNameInput = addCardForm.querySelector(".popup__input_type_img-name");
-const imgLinkInput = addCardForm.querySelector(".popup__input_type_img-link");
-
-// Попап просмотра картинки
-const imgPopup = document.querySelector(".popup_img_view");
-const imgEl = imgPopup.querySelector(".popup__image");
-const imgCaption = imgPopup.querySelector(".popup__caption");
+// const imgNameInput = addCardForm.querySelector(".popup__input_type_img-name");
+// const imgLinkInput = addCardForm.querySelector(".popup__input_type_img-link");
 
 //
 const addCardBtn = document.querySelector(".profile__add-btn");
-const closePopupButtons = document.querySelectorAll(".popup__close-btn");
+// const closePopupButtons = document.querySelectorAll(".popup__close-btn");
 // const cardsContainerEl = document.querySelector(".elements__list");
 
 // Навешиваем обработчики
 
 editProfileBtn.addEventListener("click", handleEditProfile);
-profileForm.addEventListener("submit", profileFormSubmitHandler);
+// profileForm.addEventListener("submit", profileFormSubmitHandler);
 
 addCardBtn.addEventListener("click", handleAddCard);
-addCardForm.addEventListener("submit", addCardSubmitHandler);
-
-closePopupButtons.forEach((btn) =>
-  btn.addEventListener("click", closePopupOnBtn)
-);
+// addCardForm.addEventListener("submit", addCardSubmitHandler);
 
 // Функции
 
@@ -53,32 +45,6 @@ function closePopupOnBtn(event) {
   const popup = targetEl.closest(".popup");
   closePopup(popup);
 }
-
-function handleViewImage(name, link) {
-  imgEl.src = link;
-  imgEl.alt = name;
-  imgCaption.textContent = name;
-  openPopup(imgPopup);
-}
-
-// function closePopup(popup) {
-//   popup.classList.remove("popup_opened");
-//   popup.removeEventListener("pointerdown", closePopupAnotherCase);
-//   document.removeEventListener("keydown", closePopupAnotherCase);
-// }
-
-// function closePopupAnotherCase(event) {
-//   const popup = document.querySelector(".popup_opened");
-//   if (event.key === ESCAPE || event.target === popup) {
-//     closePopup(popup);
-//   }
-// }
-
-// function openPopup(popup) {
-//   popup.classList.add("popup_opened");
-//   popup.addEventListener("pointerdown", closePopupAnotherCase);
-//   document.addEventListener("keydown", closePopupAnotherCase);
-// }
 
 function handleEditProfile() {
   nameInput.value = nameProfile.textContent.trim();
@@ -102,14 +68,17 @@ function handleAddCard() {
   openPopup(addCardPopup);
 }
 
+const popupWithImage = new PopupWithImage(".popup_img_view");
+popupWithImage.setEventListeners();
+
 function getCard(data) {
-  const card = new Card(data, handleViewImage, ".card-template");
+  const card = new Card(
+    data,
+    (name, link) => popupWithImage.open(name, link),
+    ".card-template"
+  );
   return card.generateCard();
 }
-
-// function renderCard(cardEl) {
-//   cardsContainerEl.prepend(cardEl);
-// }
 
 function addCardSubmitHandler(event) {
   event.preventDefault();
@@ -134,10 +103,6 @@ const cardsList = new Section(
 );
 
 cardsList.renderItems();
-
-// initialCards.forEach((data) => {
-//   renderCard(getCard(data));
-// });
 
 const profileFormValidator = new FormValidator(configValidate, profileForm);
 profileFormValidator.enableValidation();

@@ -1,5 +1,3 @@
-// import { ESCAPE } from "../utils/constants";
-
 export default class Popup {
   _ESCAPE = "Escape";
 
@@ -9,24 +7,28 @@ export default class Popup {
 
   open() {
     this._popupEl.classList.add("popup_opened");
-    this._popupEl.addEventListener("pointerdown", this._handleClose);
-    document.addEventListener("keydown", this._handleClose);
+    this._popupEl.addEventListener("pointerdown", (evt) =>
+      this._handleClose(evt)
+    );
+    document.addEventListener("keydown", (evt) => this._handleClose(evt));
   }
 
   close() {
     this._popupEl.classList.remove("popup_opened");
-    this._popupEl.removeEventListener("pointerdown", this._handleClose);
-    document.removeEventListener("keydown", this._handleClose);
+    this._popupEl.removeEventListener("pointerdown", (evt) =>
+      this._handleClose(evt)
+    );
+    document.removeEventListener("keydown", (evt) => this._handleClose(evt));
   }
 
-  _handleClose(event) {
-    if (event.key === this._ESCAPE || event.target === this._popupEl) {
+  _handleClose(evt) {
+    if (evt.key === this._ESCAPE || evt.target === this._popupEl) {
       this.close();
     }
   }
 
   setEventListeners() {
     this._closePopupButton = this._popupEl.querySelector(".popup__close-btn");
-    this._closePopupButton.addEventListener("click", this.close());
+    this._closePopupButton.addEventListener("click", () => this.close());
   }
 }
