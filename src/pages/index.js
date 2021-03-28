@@ -4,7 +4,7 @@ import Section from "../components/Section";
 import("./index.css");
 
 import Card from "../components/Card.js";
-import { initialCards, configValidate, ESCAPE } from "../utils/constants.js";
+import { initialCards, configValidate } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 
 // Профиль
@@ -61,24 +61,24 @@ function handleViewImage(name, link) {
   openPopup(imgPopup);
 }
 
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  popup.removeEventListener("pointerdown", closePopupAnotherCase);
-  document.removeEventListener("keydown", closePopupAnotherCase);
-}
+// function closePopup(popup) {
+//   popup.classList.remove("popup_opened");
+//   popup.removeEventListener("pointerdown", closePopupAnotherCase);
+//   document.removeEventListener("keydown", closePopupAnotherCase);
+// }
 
-function closePopupAnotherCase(event) {
-  const popup = document.querySelector(".popup_opened");
-  if (event.key === ESCAPE || event.target === popup) {
-    closePopup(popup);
-  }
-}
+// function closePopupAnotherCase(event) {
+//   const popup = document.querySelector(".popup_opened");
+//   if (event.key === ESCAPE || event.target === popup) {
+//     closePopup(popup);
+//   }
+// }
 
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  popup.addEventListener("pointerdown", closePopupAnotherCase);
-  document.addEventListener("keydown", closePopupAnotherCase);
-}
+// function openPopup(popup) {
+//   popup.classList.add("popup_opened");
+//   popup.addEventListener("pointerdown", closePopupAnotherCase);
+//   document.addEventListener("keydown", closePopupAnotherCase);
+// }
 
 function handleEditProfile() {
   nameInput.value = nameProfile.textContent.trim();
