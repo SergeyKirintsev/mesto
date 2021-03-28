@@ -9,8 +9,7 @@ export default class Card {
   _getTemplate() {
     return document
       .querySelector(this._templateSelector)
-      .content
-      .querySelector('.elements__element')
+      .content.querySelector(".elements__element")
       .cloneNode(true);
   }
 
@@ -47,7 +46,6 @@ export default class Card {
     this._likeBtn.addEventListener("click", () => this._handleToggleLike());
 
     this._imgEl = this._element.querySelector(".elements__img");
-    this._imgEl.addEventListener("click", () => this._handleViewImage(this._name, this._link));
+    this._imgEl.addEventListener("click", this._handleViewImage);
   }
-
 }
