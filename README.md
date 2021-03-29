@@ -8,6 +8,7 @@
 * адаптивная верстка
 * БЭМ Nested
 * JavaScript
+* Webpack
 
 **Figma**
 

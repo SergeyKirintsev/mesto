@@ -43,6 +43,7 @@ const configValidate = {
 };
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
+const addCardBtn = document.querySelector(".profile__add-btn");
 
 const profilePopupEl = document.querySelector(".popup_edit_profile");
 const profileForm = profilePopupEl.querySelector(".popup__form");
@@ -60,4 +61,5 @@ export {
   jobInput,
   profileForm,
   addCardForm,
+  addCardBtn,
 };
