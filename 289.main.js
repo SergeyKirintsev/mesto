@@ -1,0 +1,1 @@
+(self.webpackChunkpraktikum=self.webpackChunkpraktikum||[]).push([[289],{289:(k,u,e)=>{"use strict";e.r(u)}}]);
