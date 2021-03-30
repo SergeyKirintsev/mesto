@@ -42,6 +42,13 @@ const configValidate = {
   errorClass: "popup__input-error_active",
 };
 
+const cardsContainerSelector = ".elements__list";
+const nameElSelector = ".profile__name";
+const jobElSelector = ".profile__profession";
+const viewImagePopupSelector = ".popup_img_view";
+const profilePopupSelector = ".popup_edit_profile";
+const addCardPopupSelector = ".popup_add_card";
+
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const addCardBtn = document.querySelector(".profile__add-btn");
 
@@ -62,4 +69,10 @@ export {
   profileForm,
   addCardForm,
   addCardBtn,
+  cardsContainerSelector,
+  nameElSelector,
+  jobElSelector,
+  viewImagePopupSelector,
+  profilePopupSelector,
+  addCardPopupSelector,
 };

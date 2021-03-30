@@ -11,6 +11,12 @@ import {
   jobInput,
   profileForm,
   addCardForm,
+  cardsContainerSelector,
+  nameElSelector,
+  jobElSelector,
+  viewImagePopupSelector,
+  profilePopupSelector,
+  addCardPopupSelector,
 } from "../utils/constants.js";
 
 import UserInfo from "../components/UserInfo";
@@ -34,7 +40,7 @@ const handleEditProfile = () => {
   profilePopup.open();
 };
 
-const viewImagePopup = new PopupWithImage(".popup_img_view");
+const viewImagePopup = new PopupWithImage(viewImagePopupSelector);
 
 const getCard = (data) => {
   const card = new Card(
@@ -52,12 +58,12 @@ const cardsSection = new Section(
       cardsSection.addItem(getCard(data));
     },
   },
-  ".elements__list"
+  cardsContainerSelector
 );
 
 const user = new UserInfo({
-  nameSelector: ".profile__name",
-  jobSelector: ".profile__profession",
+  nameSelector: nameElSelector,
+  jobSelector: jobElSelector,
 });
 
 const profileSubmitHandler = (data) => {
@@ -68,7 +74,7 @@ const profileSubmitHandler = (data) => {
   profilePopup.close();
 };
 
-const profilePopup = new PopupWithForm(".popup_edit_profile", (data) =>
+const profilePopup = new PopupWithForm(profilePopupSelector, (data) =>
   profileSubmitHandler(data)
 );
 
@@ -79,7 +85,7 @@ const addCardSubmitHandler = (data) => {
   addCardPopup.close();
 };
 
-const addCardPopup = new PopupWithForm(".popup_add_card", (data) =>
+const addCardPopup = new PopupWithForm(addCardPopupSelector, (data) =>
   addCardSubmitHandler(data)
 );
 
