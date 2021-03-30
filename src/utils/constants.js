@@ -43,6 +43,7 @@ const configValidate = {
 };
 
 const cardsContainerSelector = ".elements__list";
+const cardTemplateSelector = ".card-template";
 const nameElSelector = ".profile__name";
 const jobElSelector = ".profile__profession";
 const viewImagePopupSelector = ".popup_img_view";
@@ -52,12 +53,12 @@ const addCardPopupSelector = ".popup_add_card";
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const addCardBtn = document.querySelector(".profile__add-btn");
 
-const profilePopupEl = document.querySelector(".popup_edit_profile");
+const profilePopupEl = document.querySelector(profilePopupSelector);
 const profileForm = profilePopupEl.querySelector(".popup__form");
 const nameInput = profileForm.querySelector(".popup__input_type_name");
 const jobInput = profileForm.querySelector(".popup__input_type_job");
 
-const addCardPopup = document.querySelector(".popup_add_card");
+const addCardPopup = document.querySelector(addCardPopupSelector);
 const addCardForm = addCardPopup.querySelector(".popup__form");
 
 export {
@@ -75,4 +76,5 @@ export {
   viewImagePopupSelector,
   profilePopupSelector,
   addCardPopupSelector,
+  cardTemplateSelector,
 };

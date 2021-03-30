@@ -17,6 +17,7 @@ import {
   viewImagePopupSelector,
   profilePopupSelector,
   addCardPopupSelector,
+  cardTemplateSelector,
 } from "../utils/constants.js";
 
 import UserInfo from "../components/UserInfo";
@@ -46,7 +47,7 @@ const getCard = (data) => {
   const card = new Card(
     data,
     () => viewImagePopup.open(data.name, data.link),
-    ".card-template"
+    cardTemplateSelector
   );
   return card.generateCard();
 };
