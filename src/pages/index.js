@@ -1,5 +1,7 @@
 "use strict";
 
+import Api from "../components/Api";
+
 import("./index.css");
 
 import {
@@ -103,4 +105,22 @@ addCardFormValidator.enableValidation();
 editProfileBtn.addEventListener("click", handleEditProfile);
 addCardBtn.addEventListener("click", handleAddCard);
 
-cardsSection.renderItems();
+// cardsSection.renderItems();
+
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-22",
+  headers: {
+    authorization: "9405df8f-2b49-4fde-857c-7e0c079d778d",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getInitialCards()
+  .then((initialCards) => {
+    console.log(initialCards);
+    cardsSection.renderItems(initialCards);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
