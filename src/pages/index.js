@@ -86,10 +86,18 @@ const profilePopup = new PopupWithForm(profilePopupSelector, (data) =>
 );
 
 const addCardSubmitHandler = (data) => {
-  const name = data["card-name"];
-  const link = data["card-link"];
-  cardsSection.addItem({ name, link });
-  addCardPopup.close();
+  api
+    .createCard({
+      name: data["card-name"],
+      link: data["card-link"],
+    })
+    .then((card) => {
+      cardsSection.addItem(card);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => addCardPopup.close());
 };
 
 const addCardPopup = new PopupWithForm(addCardPopupSelector, (data) =>
