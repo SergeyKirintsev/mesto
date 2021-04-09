@@ -117,8 +117,9 @@ api
   .getInitialCards()
   .then((initialCards) => {
     // console.log(initialCards);
-    cardsSection.items = initialCards;
+    cardsSection.setItems(initialCards);
     cardsSection.renderItems();
+    console.log(cardsSection);
   })
   .catch((err) => {
     console.log(err);
