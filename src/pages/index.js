@@ -120,9 +120,9 @@ const api = new Api({
 });
 
 api
-  .getInitialCards()
-  .then((initialCards) => {
-    cardsSection.setItems(initialCards);
+  .getCards()
+  .then((cards) => {
+    cardsSection.setItems(cards);
     cardsSection.renderItems();
   })
   .catch((err) => {
