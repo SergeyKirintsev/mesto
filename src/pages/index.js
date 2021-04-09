@@ -5,7 +5,6 @@ import Api from "../components/Api";
 import("./index.css");
 
 import {
-  initialCards,
   configValidate,
   editProfileBtn,
   addCardBtn,
@@ -116,10 +115,8 @@ const api = new Api({
 api
   .getInitialCards()
   .then((initialCards) => {
-    // console.log(initialCards);
     cardsSection.setItems(initialCards);
     cardsSection.renderItems();
-    console.log(cardsSection);
   })
   .catch((err) => {
     console.log(err);
