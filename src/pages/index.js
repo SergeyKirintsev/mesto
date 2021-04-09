@@ -56,10 +56,8 @@ const getCard = (data) => {
 
 const cardsSection = new Section(
   {
-    items: initialCards,
-    renderer: (data) => {
-      cardsSection.addItem(getCard(data));
-    },
+    items: [],
+    renderer: (data) => getCard(data),
   },
   cardsContainerSelector
 );
@@ -84,7 +82,7 @@ const profilePopup = new PopupWithForm(profilePopupSelector, (data) =>
 const addCardSubmitHandler = (data) => {
   const name = data["card-name"];
   const link = data["card-link"];
-  cardsSection.addItem(getCard({ name, link }));
+  cardsSection.addItem({ name, link });
   addCardPopup.close();
 };
 
@@ -118,8 +116,9 @@ const api = new Api({
 api
   .getInitialCards()
   .then((initialCards) => {
-    console.log(initialCards);
-    cardsSection.renderItems(initialCards);
+    // console.log(initialCards);
+    cardsSection.items = initialCards;
+    cardsSection.renderItems();
   })
   .catch((err) => {
     console.log(err);
