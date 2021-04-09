@@ -121,3 +121,13 @@ api
   .catch((err) => {
     console.log(err);
   });
+
+api
+  .getUserInfo()
+  .then((userData) => {
+    console.log(userData);
+    user.setUserInfo(userData);
+  })
+  .catch((err) => {
+    console.log(err);
+  });

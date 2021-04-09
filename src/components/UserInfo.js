@@ -11,8 +11,8 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo({ name, job }) {
+  setUserInfo({ name, about }) {
     this._name.textContent = name.trim();
-    this._job.textContent = job.trim();
+    this._job.textContent = about.trim();
   }
 }
