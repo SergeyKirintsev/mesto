@@ -35,7 +35,7 @@ const handleAddCard = () => {
 };
 
 const handleEditProfile = () => {
-  const { name, job } = user.getUserInfo();
+  const { name, job } = userEl.getUserInfo();
   nameInput.value = name;
   jobInput.value = job;
   profileFormValidator.clearValidation();
@@ -61,17 +61,24 @@ const cardsSection = new Section(
   cardsContainerSelector
 );
 
-const user = new UserInfo({
+const userEl = new UserInfo({
   nameSelector: nameElSelector,
   jobSelector: jobElSelector,
 });
 
 const profileSubmitHandler = (data) => {
-  user.setUserInfo({
-    name: data["name-profile"],
-    job: data["job-profile"],
-  });
-  profilePopup.close();
+  api
+    .setUserInfo({
+      name: data["name-profile"],
+      about: data["job-profile"],
+    })
+    .then((userData) => {
+      userEl.setUserInfo(userData);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => profilePopup.close());
 };
 
 const profilePopup = new PopupWithForm(profilePopupSelector, (data) =>
@@ -125,8 +132,7 @@ api
 api
   .getUserInfo()
   .then((userData) => {
-    console.log(userData);
-    user.setUserInfo(userData);
+    userEl.setUserInfo(userData);
   })
   .catch((err) => {
     console.log(err);
