@@ -1,10 +1,18 @@
 export default class Card {
-  constructor(data, handleCardClick, templateSelector) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor(
+    card,
+    handleCardClick,
+    templateSelector,
+    handleToggleLike,
+    currentUser
+  ) {
+    this._card = card;
+    this._name = card.name;
+    this._link = card.link;
     this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
-    this._likes = data.likes.length;
+    this._toggleLike = handleToggleLike;
+    this._currentUser = currentUser;
   }
 
   _getTemplate() {
@@ -19,9 +27,10 @@ export default class Card {
     this._setEventListeners();
 
     this._element.querySelector(".elements__text").textContent = this._name;
-    this._element.querySelector(
-      ".elements__like-count"
-    ).textContent = this._likes;
+
+    this._likesCountEl = this._element.querySelector(".elements__like-count");
+    this._setLikesCount(this._card.likes.length);
+    this._checkMyLike(this._card.likes);
 
     this._imgEl.src = this._link;
     this._imgEl.alt = this._name;
@@ -39,7 +48,25 @@ export default class Card {
   }
 
   _handleToggleLike() {
-    this._likeBtn.classList.toggle("elements__like-btn_active");
+    if (!this._likeBtn.classList.contains("elements__like-btn_active")) {
+      this._toggleLike("PUT", this._card._id)
+        .then((card) => {
+          this._setLikesCount(card.likes.length);
+          this._checkMyLike(card.likes);
+        })
+        .catch((err) => {
+          console.log("Ошибка при постановке лайка", err);
+        });
+    } else {
+      this._toggleLike("DELETE", this._card._id)
+        .then((card) => {
+          this._setLikesCount(card.likes.length);
+          this._checkMyLike(card.likes);
+        })
+        .catch((err) => {
+          console.log("Ошибка при удалении лайка", err);
+        });
+    }
   }
 
   _setEventListeners() {
@@ -51,5 +78,18 @@ export default class Card {
 
     this._imgEl = this._element.querySelector(".elements__img");
     this._imgEl.addEventListener("click", this._handleCardClick);
+  }
+
+  _setLikesCount(count) {
+    this._likesCountEl.textContent = count;
+  }
+
+  _checkMyLike(likes) {
+    const myLike = (el) => el._id === this._currentUser._id;
+    if (likes.some(myLike)) {
+      this._likeBtn.classList.add("elements__like-btn_active");
+    } else {
+      this._likeBtn.classList.remove("elements__like-btn_active");
+    }
   }
 }

@@ -1,5 +1,13 @@
 "use strict";
 
+const configAPI = {
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-22",
+  headers: {
+    authorization: "9405df8f-2b49-4fde-857c-7e0c079d778d",
+    "Content-Type": "application/json",
+  },
+};
+
 const configValidate = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -29,6 +37,7 @@ const addCardPopup = document.querySelector(addCardPopupSelector);
 const addCardForm = addCardPopup.querySelector(".popup__form");
 
 export {
+  configAPI,
   configValidate,
   editProfileBtn,
   nameInput,

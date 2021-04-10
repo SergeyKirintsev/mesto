@@ -19,6 +19,7 @@ import {
   profilePopupSelector,
   addCardPopupSelector,
   cardTemplateSelector,
+  configAPI,
 } from "../utils/constants.js";
 
 import UserInfo from "../components/UserInfo";
@@ -27,6 +28,8 @@ import Card from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
 import FormValidator from "../components/FormValidator";
+
+let currentUser;
 
 const handleAddCard = () => {
   addCardForm.reset();
@@ -44,11 +47,21 @@ const handleEditProfile = () => {
 
 const viewImagePopup = new PopupWithImage(viewImagePopupSelector);
 
+const handleToggleLike = (action, cardId) => {
+  if (action === "PUT") {
+    return api.putLike(cardId);
+  } else {
+    return api.deleteLike(cardId);
+  }
+};
+
 const getCard = (data) => {
   const card = new Card(
     data,
     () => viewImagePopup.open(data.name, data.link),
-    cardTemplateSelector
+    cardTemplateSelector,
+    handleToggleLike,
+    currentUser
   );
   return card.generateCard();
 };
@@ -119,29 +132,34 @@ addCardBtn.addEventListener("click", handleAddCard);
 
 // cardsSection.renderItems();
 
-const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-22",
-  headers: {
-    authorization: "9405df8f-2b49-4fde-857c-7e0c079d778d",
-    "Content-Type": "application/json",
-  },
-});
+const api = new Api(configAPI);
 
-api
-  .getCards()
-  .then((cards) => {
+Promise.all([api.getUserInfo(), api.getCards()])
+  .then(([userData, cards]) => {
+    currentUser = userData;
+    userEl.setUserInfo(currentUser);
     cardsSection.setItems(cards);
     cardsSection.renderItems();
   })
   .catch((err) => {
+    console.log("Один из промисов отклонен");
     console.log(err);
   });
 
-api
-  .getUserInfo()
-  .then((userData) => {
-    userEl.setUserInfo(userData);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// api.getCards()
+//   .then((cards) => {
+//     cardsSection.setItems(cards);
+//     cardsSection.renderItems();
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+//
+// api.getUserInfo()
+//   .then((userData) => {
+//     userEl.setUserInfo(userData);
+//     console.log("userID", userData._id);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
