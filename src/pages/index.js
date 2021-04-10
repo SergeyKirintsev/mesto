@@ -55,13 +55,18 @@ const handleToggleLike = (action, cardId) => {
   }
 };
 
+const handleDeleteCard = (cardId) => {
+  return api.deleteCard(cardId);
+};
+
 const getCard = (data) => {
   const card = new Card(
     data,
     () => viewImagePopup.open(data.name, data.link),
     cardTemplateSelector,
     handleToggleLike,
-    currentUser
+    currentUser,
+    handleDeleteCard
   );
   return card.generateCard();
 };
@@ -130,8 +135,6 @@ addCardFormValidator.enableValidation();
 editProfileBtn.addEventListener("click", handleEditProfile);
 addCardBtn.addEventListener("click", handleAddCard);
 
-// cardsSection.renderItems();
-
 const api = new Api(configAPI);
 
 Promise.all([api.getUserInfo(), api.getCards()])
@@ -142,24 +145,5 @@ Promise.all([api.getUserInfo(), api.getCards()])
     cardsSection.renderItems();
   })
   .catch((err) => {
-    console.log("Один из промисов отклонен");
-    console.log(err);
+    console.log("Один из промисов отклонен", err);
   });
-
-// api.getCards()
-//   .then((cards) => {
-//     cardsSection.setItems(cards);
-//     cardsSection.renderItems();
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-//
-// api.getUserInfo()
-//   .then((userData) => {
-//     userEl.setUserInfo(userData);
-//     console.log("userID", userData._id);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });

@@ -4,7 +4,8 @@ export default class Card {
     handleCardClick,
     templateSelector,
     handleToggleLike,
-    currentUser
+    currentUser,
+    handleDeleteCard
   ) {
     this._card = card;
     this._name = card.name;
@@ -13,6 +14,8 @@ export default class Card {
     this._templateSelector = templateSelector;
     this._toggleLike = handleToggleLike;
     this._currentUser = currentUser;
+    this._isMyCard = card.owner._id === currentUser._id;
+    this._deleteCard = handleDeleteCard;
   }
 
   _getTemplate() {
@@ -39,12 +42,23 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._element.style.transition = "0.6s";
-    this._element.style.transform = "rotateY(90deg)";
-    setTimeout(() => {
-      this._element.remove();
-      this._element = null;
-    }, 600);
+    this._deleteCard(this._card._id)
+      .then((data) => {
+        console.log("удаление карточки");
+        console.log(data);
+
+        this._element.style.transition = "0.6s";
+        this._element.style.transform = "rotateY(90deg)";
+
+        setTimeout(() => {
+          this._element.remove();
+          this._element = null;
+        }, 600);
+      })
+      .catch((err) => {
+        console.log("Ошибка при удалении карточки");
+        console.log(err);
+      });
   }
 
   _handleToggleLike() {
@@ -71,7 +85,11 @@ export default class Card {
 
   _setEventListeners() {
     this._removeBtn = this._element.querySelector(".elements__trash-btn");
-    this._removeBtn.addEventListener("click", () => this._handleDeleteCard());
+    if (this._isMyCard) {
+      this._removeBtn.addEventListener("click", () => this._handleDeleteCard());
+    } else {
+      this._removeBtn.remove();
+    }
 
     this._likeBtn = this._element.querySelector(".elements__like-btn");
     this._likeBtn.addEventListener("click", () => this._handleToggleLike());
