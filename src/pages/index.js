@@ -66,11 +66,11 @@ const userEl = new UserInfo({
   jobSelector: jobElSelector,
 });
 
-const profileSubmitHandler = (data) => {
+const profileSubmitHandler = (user) => {
   api
     .setUserInfo({
-      name: data["name-profile"],
-      about: data["job-profile"],
+      name: user.name,
+      about: user.about,
     })
     .then((userData) => {
       userEl.setUserInfo(userData);
@@ -85,11 +85,11 @@ const profilePopup = new PopupWithForm(profilePopupSelector, (data) =>
   profileSubmitHandler(data)
 );
 
-const addCardSubmitHandler = (data) => {
+const addCardSubmitHandler = (card) => {
   api
     .createCard({
-      name: data["card-name"],
-      link: data["card-link"],
+      name: card.name,
+      link: card.link,
     })
     .then((card) => {
       cardsSection.addItem(card);
