@@ -1,37 +1,12 @@
 "use strict";
 
-const initialCards = [
-  {
-    name: "Архыз",
-    link:
-      "https://images.unsplash.com/photo-1612409210157-fae7e07df828?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2852&q=80",
+const configAPI = {
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-22",
+  headers: {
+    authorization: "9405df8f-2b49-4fde-857c-7e0c079d778d",
+    "Content-Type": "application/json",
   },
-  {
-    name: "Челябинская область",
-    link:
-      "https://images.unsplash.com/photo-1612583386053-87b6261ff7b0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1268&q=80",
-  },
-  {
-    name: "Иваново",
-    link:
-      "https://images.unsplash.com/photo-1612588086184-89c0b2d69467?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80",
-  },
-  {
-    name: "Камчатка",
-    link:
-      "https://images.unsplash.com/photo-1612609819547-e68a5c32581a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1268&q=80",
-  },
-  {
-    name: "Холмогорский район",
-    link:
-      "https://images.unsplash.com/photo-1599824425751-b8e0a676a647?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2104&q=80",
-  },
-  {
-    name: "Байкал",
-    link:
-      "https://images.unsplash.com/photo-1612538908022-3852d47746a5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80",
-  },
-];
+};
 
 const configValidate = {
   formSelector: ".popup__form",
@@ -46,9 +21,11 @@ const cardsContainerSelector = ".elements__list";
 const cardTemplateSelector = ".card-template";
 const nameElSelector = ".profile__name";
 const jobElSelector = ".profile__profession";
+const avatarElSelector = ".profile__avatar";
 const viewImagePopupSelector = ".popup_img_view";
 const profilePopupSelector = ".popup_edit_profile";
 const addCardPopupSelector = ".popup_add_card";
+const avatarPopupSelector = ".popup_avatar";
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const addCardBtn = document.querySelector(".profile__add-btn");
@@ -61,12 +38,17 @@ const jobInput = profileForm.querySelector(".popup__input_type_job");
 const addCardPopup = document.querySelector(addCardPopupSelector);
 const addCardForm = addCardPopup.querySelector(".popup__form");
 
+const avatarPopup = document.querySelector(avatarPopupSelector);
+const avatarForm = avatarPopup.querySelector(".popup__form");
+const avatarLogo = document.querySelector(".profile__avatar-wrapper");
+
 export {
-  initialCards,
+  configAPI,
   configValidate,
   editProfileBtn,
   nameInput,
   jobInput,
+  avatarElSelector,
   profileForm,
   addCardForm,
   addCardBtn,
@@ -77,4 +59,8 @@ export {
   profilePopupSelector,
   addCardPopupSelector,
   cardTemplateSelector,
+  avatarPopupSelector,
+  avatarPopup,
+  avatarForm,
+  avatarLogo,
 };

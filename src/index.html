@@ -16,8 +16,10 @@
 
       <main class="content">
         <section class="profile">
-          <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="аватар" />
-
+          <div class="profile__avatar-wrapper">
+            <img class="profile__avatar" src="" alt="аватар" />
+            <div class="profile__avatar-overlay"></div>
+          </div>
           <div class="profile__info">
             <div class="profile__row">
               <h1 class="profile__name block">Человек с длинным именем</h1>
@@ -61,7 +63,7 @@
             <input
               id="name-profile"
               type="text"
-              name="name-profile"
+              name="name"
               class="popup__input popup__input_type_name"
               value=""
               placeholder="Имя"
@@ -76,7 +78,7 @@
             <input
               id="job-profile"
               type="text"
-              name="job-profile"
+              name="about"
               class="popup__input popup__input_type_job"
               value=""
               placeholder="Увлечение/работа"
@@ -104,7 +106,7 @@
             <input
               id="card-name"
               type="text"
-              name="card-name"
+              name="name"
               class="popup__input popup__input_type_img-name"
               value=""
               placeholder="Название"
@@ -119,7 +121,7 @@
             <input
               id="card-link"
               type="url"
-              name="card-link"
+              name="link"
               class="popup__input popup__input_type_img-link"
               value=""
               placeholder="Ссылка на картинку"
@@ -127,6 +129,32 @@
               aria-label="Ссылка на картинку"
             />
             <span class="popup__input-error card-link-error"></span>
+          </section>
+          <button type="submit" class="popup__form-submit btn-hover">
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Форма обновления аватара -->
+    <div class="popup popup_avatar">
+      <div class="popup__container">
+        <button type="button" class="popup__close-btn btn-hover"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form name="avatar" class="popup__form" novalidate>
+          <section class="popup__section">
+            <input
+              id="avatar-link"
+              type="url"
+              name="avatar"
+              class="popup__input"
+              value=""
+              placeholder="Ссылка на аватар"
+              required
+              aria-label="Ссылка на аватар"
+            />
+            <span class="popup__input-error avatar-link-error"></span>
           </section>
           <button type="submit" class="popup__form-submit btn-hover">
             Создать
@@ -167,11 +195,14 @@
         </div>
         <div class="elements__description">
           <h2 class="elements__text block"></h2>
-          <button
-            type="button"
-            aria-label="Нравится"
-            class="elements__like-btn btn-hover"
-          ></button>
+          <div class="elements__like-wrap">
+            <button
+              type="button"
+              aria-label="Нравится"
+              class="elements__like-btn btn-hover"
+            ></button>
+            <span class="elements__like-count">25</span>
+          </div>
         </div>
       </li>
     </template>
