@@ -21,6 +21,9 @@ import {
   addCardPopupSelector,
   cardTemplateSelector,
   configAPI,
+  avatarLogo,
+  avatarPopupSelector,
+  avatarForm,
 } from "../utils/constants.js";
 
 import UserInfo from "../components/UserInfo";
@@ -121,18 +124,43 @@ const addCardPopup = new PopupWithForm(addCardPopupSelector, {
   },
 });
 
+const avatarPopup = new PopupWithForm(avatarPopupSelector, {
+  handleFormSubmit: function ({ avatar }) {
+    this.savingData();
+    api
+      .updateAvatar(avatar)
+      .then((userData) => {
+        userEl.setUserAvatar(userData);
+      })
+      .catch((err) => {
+        console.log("Обновление аватара", err);
+      })
+      .finally(() => this.close());
+  },
+});
+
+const updateAvatar = () => {
+  avatarForm.reset();
+  avatarFormValidator.clearValidation();
+  avatarPopup.open();
+};
+
 const profileFormValidator = new FormValidator(configValidate, profileForm);
 const addCardFormValidator = new FormValidator(configValidate, addCardForm);
+const avatarFormValidator = new FormValidator(configValidate, avatarForm);
 
 viewImagePopup.setEventListeners();
 profilePopup.setEventListeners();
 addCardPopup.setEventListeners();
+avatarPopup.setEventListeners();
 
 profileFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 editProfileBtn.addEventListener("click", handleEditProfile);
 addCardBtn.addEventListener("click", handleAddCard);
+avatarLogo.addEventListener("click", updateAvatar);
 
 const api = new Api(configAPI);
 
