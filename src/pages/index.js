@@ -87,6 +87,7 @@ const userEl = new UserInfo({
 
 const profilePopup = new PopupWithForm(profilePopupSelector, {
   handleFormSubmit: function (user) {
+    this.savingData();
     api
       .setUserInfo({
         name: user.name,
@@ -98,12 +99,13 @@ const profilePopup = new PopupWithForm(profilePopupSelector, {
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => profilePopup.close());
+      .finally(() => this.close());
   },
 });
 
 const addCardPopup = new PopupWithForm(addCardPopupSelector, {
   handleFormSubmit: function (card) {
+    this.savingData();
     api
       .createCard({
         name: card.name,
@@ -115,7 +117,7 @@ const addCardPopup = new PopupWithForm(addCardPopupSelector, {
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => addCardPopup.close());
+      .finally(() => this.close());
   },
 });
 
