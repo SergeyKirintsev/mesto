@@ -1,11 +1,11 @@
 export default class Card {
   constructor(
     card,
-    handleCardClick,
-    templateSelector,
-    handleToggleLike,
     currentUser,
-    handleDeleteCard
+    templateSelector,
+    handleCardClick,
+    { handleToggleLike },
+    { handleDeleteCard }
   ) {
     this._card = card;
     this._name = card.name;
@@ -44,9 +44,6 @@ export default class Card {
   _handleDeleteCard() {
     this._deleteCard(this._card._id)
       .then((data) => {
-        console.log("удаление карточки");
-        console.log(data);
-
         this._element.style.transition = "0.6s";
         this._element.style.transform = "rotateY(90deg)";
 

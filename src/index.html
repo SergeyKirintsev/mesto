@@ -16,8 +16,10 @@
 
       <main class="content">
         <section class="profile">
-          <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="аватар" />
-
+          <div class="profile__avatar-wrapper">
+            <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="аватар" />
+            <div class="profile__avatar-overlay"></div>
+          </div>
           <div class="profile__info">
             <div class="profile__row">
               <h1 class="profile__name block">Человек с длинным именем</h1>

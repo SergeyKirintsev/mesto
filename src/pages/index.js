@@ -10,6 +10,7 @@ import {
   addCardBtn,
   nameInput,
   jobInput,
+  avatarElSelector,
   profileForm,
   addCardForm,
   cardsContainerSelector,
@@ -47,80 +48,76 @@ const handleEditProfile = () => {
 
 const viewImagePopup = new PopupWithImage(viewImagePopupSelector);
 
-const handleToggleLike = (action, cardId) => {
-  if (action === "PUT") {
-    return api.putLike(cardId);
-  } else {
-    return api.deleteLike(cardId);
-  }
-};
-
-const handleDeleteCard = (cardId) => {
-  return api.deleteCard(cardId);
-};
-
 const getCard = (data) => {
   const card = new Card(
     data,
-    () => viewImagePopup.open(data.name, data.link),
-    cardTemplateSelector,
-    handleToggleLike,
     currentUser,
-    handleDeleteCard
+    cardTemplateSelector,
+    () => viewImagePopup.open(data.name, data.link),
+    {
+      handleToggleLike: function (action, cardId) {
+        if (action === "PUT") {
+          return api.putLike(cardId);
+        } else {
+          return api.deleteLike(cardId);
+        }
+      },
+    },
+    {
+      handleDeleteCard: function (cardId) {
+        return api.deleteCard(cardId);
+      },
+    }
   );
   return card.generateCard();
 };
 
 const cardsSection = new Section(
   {
-    items: [],
     renderer: (data) => getCard(data),
   },
   cardsContainerSelector
 );
 
 const userEl = new UserInfo({
-  nameSelector: nameElSelector,
-  jobSelector: jobElSelector,
+  nameElSelector,
+  jobElSelector,
+  avatarElSelector,
 });
 
-const profileSubmitHandler = (user) => {
-  api
-    .setUserInfo({
-      name: user.name,
-      about: user.about,
-    })
-    .then((userData) => {
-      userEl.setUserInfo(userData);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => profilePopup.close());
-};
+const profilePopup = new PopupWithForm(profilePopupSelector, {
+  handleFormSubmit: function (user) {
+    api
+      .setUserInfo({
+        name: user.name,
+        about: user.about,
+      })
+      .then((userData) => {
+        userEl.setUserInfo(userData);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => profilePopup.close());
+  },
+});
 
-const profilePopup = new PopupWithForm(profilePopupSelector, (data) =>
-  profileSubmitHandler(data)
-);
-
-const addCardSubmitHandler = (card) => {
-  api
-    .createCard({
-      name: card.name,
-      link: card.link,
-    })
-    .then((card) => {
-      cardsSection.addItem(card);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => addCardPopup.close());
-};
-
-const addCardPopup = new PopupWithForm(addCardPopupSelector, (data) =>
-  addCardSubmitHandler(data)
-);
+const addCardPopup = new PopupWithForm(addCardPopupSelector, {
+  handleFormSubmit: function (card) {
+    api
+      .createCard({
+        name: card.name,
+        link: card.link,
+      })
+      .then((card) => {
+        cardsSection.addItem(card);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => addCardPopup.close());
+  },
+});
 
 const profileFormValidator = new FormValidator(configValidate, profileForm);
 const addCardFormValidator = new FormValidator(configValidate, addCardForm);
@@ -141,6 +138,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
   .then(([userData, cards]) => {
     currentUser = userData;
     userEl.setUserInfo(currentUser);
+    userEl.setUserAvatar(currentUser);
     cardsSection.setItems(cards);
     cardsSection.renderItems();
   })

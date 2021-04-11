@@ -21,6 +21,7 @@ const cardsContainerSelector = ".elements__list";
 const cardTemplateSelector = ".card-template";
 const nameElSelector = ".profile__name";
 const jobElSelector = ".profile__profession";
+const avatarElSelector = ".profile__avatar";
 const viewImagePopupSelector = ".popup_img_view";
 const profilePopupSelector = ".popup_edit_profile";
 const addCardPopupSelector = ".popup_add_card";
@@ -42,6 +43,7 @@ export {
   editProfileBtn,
   nameInput,
   jobInput,
+  avatarElSelector,
   profileForm,
   addCardForm,
   addCardBtn,
