@@ -67,15 +67,12 @@ export default class Api {
   }
 
   updateAvatar(avatar) {
-    return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-22/users/me/avatar`,
-      {
-        method: "PATCH",
-        headers: this._headers,
-        body: JSON.stringify({
-          avatar,
-        }),
-      }
-    ).then(this._checkResponse);
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar,
+      }),
+    }).then(this._checkResponse);
   }
 }
