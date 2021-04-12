@@ -42,20 +42,7 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._deleteCard(this._card._id)
-      .then((data) => {
-        this._element.style.transition = "0.6s";
-        this._element.style.transform = "rotateY(90deg)";
-
-        setTimeout(() => {
-          this._element.remove();
-          this._element = null;
-        }, 600);
-      })
-      .catch((err) => {
-        console.log("Ошибка при удалении карточки");
-        console.log(err);
-      });
+    this._deleteCard(this._card._id);
   }
 
   _handleToggleLike() {

@@ -24,6 +24,7 @@ import {
   avatarLogo,
   avatarPopupSelector,
   avatarForm,
+  confirmPopupSelector,
 } from "../utils/constants.js";
 
 import UserInfo from "../components/UserInfo";
@@ -32,6 +33,7 @@ import Card from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
 import FormValidator from "../components/FormValidator";
+import PopupWithConfirm from "../components/PopupWithConfirm";
 
 let currentUser;
 
@@ -51,6 +53,30 @@ const handleEditProfile = () => {
 
 const viewImagePopup = new PopupWithImage(viewImagePopupSelector);
 
+const confirmAction = () => {
+  return new Promise((res, rej) => {
+    confirmPopup.open(res, rej);
+  });
+};
+
+function deleteCardWithConfirm(cardId) {
+  api
+    .deleteCard(cardId)
+    .then(() => {
+      this._element.style.transition = "0.6s";
+      this._element.style.transform = "rotateY(90deg)";
+
+      setTimeout(() => {
+        this._element.remove();
+        this._element = null;
+      }, 600);
+    })
+    .catch((err) => {
+      console.log("Ошибка при удалении карточки");
+      console.log(err);
+    });
+}
+
 const getCard = (data) => {
   const card = new Card(
     data,
@@ -68,7 +94,9 @@ const getCard = (data) => {
     },
     {
       handleDeleteCard: function (cardId) {
-        return api.deleteCard(cardId);
+        confirmAction().then(() => {
+          deleteCardWithConfirm.call(this, cardId);
+        });
       },
     }
   );
@@ -139,11 +167,16 @@ const avatarPopup = new PopupWithForm(avatarPopupSelector, {
   },
 });
 
-const updateAvatar = () => {
+const handleUpdateAvatar = () => {
   avatarForm.reset();
   avatarFormValidator.clearValidation();
   avatarPopup.open();
 };
+
+// const confirmPopup = new PopupWithConfirm
+const confirmPopup = new PopupWithConfirm(confirmPopupSelector, {
+  handleFormSubmit: function () {},
+});
 
 const profileFormValidator = new FormValidator(configValidate, profileForm);
 const addCardFormValidator = new FormValidator(configValidate, addCardForm);
@@ -153,6 +186,7 @@ viewImagePopup.setEventListeners();
 profilePopup.setEventListeners();
 addCardPopup.setEventListeners();
 avatarPopup.setEventListeners();
+confirmPopup.setEventListeners();
 
 profileFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
@@ -160,7 +194,7 @@ avatarFormValidator.enableValidation();
 
 editProfileBtn.addEventListener("click", handleEditProfile);
 addCardBtn.addEventListener("click", handleAddCard);
-avatarLogo.addEventListener("click", updateAvatar);
+avatarLogo.addEventListener("click", handleUpdateAvatar);
 
 const api = new Api(configAPI);
 

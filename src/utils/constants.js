@@ -26,6 +26,7 @@ const viewImagePopupSelector = ".popup_img_view";
 const profilePopupSelector = ".popup_edit_profile";
 const addCardPopupSelector = ".popup_add_card";
 const avatarPopupSelector = ".popup_avatar";
+const confirmPopupSelector = ".popup_confirm";
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const addCardBtn = document.querySelector(".profile__add-btn");
@@ -41,6 +42,8 @@ const addCardForm = addCardPopup.querySelector(".popup__form");
 const avatarPopup = document.querySelector(avatarPopupSelector);
 const avatarForm = avatarPopup.querySelector(".popup__form");
 const avatarLogo = document.querySelector(".profile__avatar-wrapper");
+
+const confirmPopup = document.querySelector(".popup_confirm");
 
 export {
   configAPI,
@@ -63,4 +66,6 @@ export {
   avatarPopup,
   avatarForm,
   avatarLogo,
+  confirmPopup,
+  confirmPopupSelector,
 };
