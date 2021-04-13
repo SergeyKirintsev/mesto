@@ -42,7 +42,7 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._deleteCard(this._card._id);
+    this._deleteCard(this._card._id, this._element);
   }
 
   _handleToggleLike() {

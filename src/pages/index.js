@@ -38,7 +38,6 @@ import PopupWithConfirm from "../components/PopupWithConfirm";
 let currentUser;
 
 const handleAddCard = () => {
-  addCardForm.reset();
   addCardFormValidator.clearValidation();
   addCardPopup.open();
 };
@@ -59,16 +58,16 @@ const confirmAction = () => {
   });
 };
 
-function deleteCardWithConfirm(cardId) {
+function deleteCardWithConfirm(cardId, cardEl) {
   api
     .deleteCard(cardId)
     .then(() => {
-      this._element.style.transition = "0.6s";
-      this._element.style.transform = "rotateY(90deg)";
+      cardEl.style.transition = "0.6s";
+      cardEl.style.transform = "rotateY(90deg)";
 
       setTimeout(() => {
-        this._element.remove();
-        this._element = null;
+        cardEl.remove();
+        cardEl = null;
       }, 600);
     })
     .catch((err) => {
@@ -93,10 +92,10 @@ const getCard = (data) => {
       },
     },
     {
-      handleDeleteCard: function (cardId) {
+      handleDeleteCard: function (cardId, cardEl) {
         confirmAction()
           .then(() => {
-            deleteCardWithConfirm.call(this, cardId);
+            deleteCardWithConfirm(cardId, cardEl);
           })
           .catch(() => console.log("отказ от удаления карточки"));
       },
@@ -128,11 +127,11 @@ const profilePopup = new PopupWithForm(profilePopupSelector, {
       })
       .then((userData) => {
         userEl.setUserInfo(userData);
+        profilePopup.close();
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => this.close());
+      });
   },
 });
 
@@ -146,11 +145,11 @@ const addCardPopup = new PopupWithForm(addCardPopupSelector, {
       })
       .then((card) => {
         cardsSection.addItem(card);
+        addCardPopup.close();
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => this.close());
+      });
   },
 });
 
@@ -161,16 +160,15 @@ const avatarPopup = new PopupWithForm(avatarPopupSelector, {
       .updateAvatar(avatar)
       .then((userData) => {
         userEl.setUserAvatar(userData);
+        avatarPopup.close();
       })
       .catch((err) => {
         console.log("Обновление аватара", err);
-      })
-      .finally(() => this.close());
+      });
   },
 });
 
 const handleUpdateAvatar = () => {
-  avatarForm.reset();
   avatarFormValidator.clearValidation();
   avatarPopup.open();
 };
