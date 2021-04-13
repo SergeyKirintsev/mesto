@@ -94,9 +94,11 @@ const getCard = (data) => {
     },
     {
       handleDeleteCard: function (cardId) {
-        confirmAction().then(() => {
-          deleteCardWithConfirm.call(this, cardId);
-        });
+        confirmAction()
+          .then(() => {
+            deleteCardWithConfirm.call(this, cardId);
+          })
+          .catch(() => console.log("отказ от удаления карточки"));
       },
     }
   );
